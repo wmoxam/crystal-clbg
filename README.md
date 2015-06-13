@@ -10,7 +10,7 @@ Targeting the HEAD version of Crystal
 Benchmarks
 ----------
 
-* Fannkuchredux
+Fannkuchredux:
 
     $ crystal build fannkuchredux.cr
     $ ./fannkuchredux 11
