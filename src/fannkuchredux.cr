@@ -1,7 +1,9 @@
 # The Computer Language Benchmarks Game
 # http://benchmarksgame.alioth.debian.org/
-# Contributed by Wesley Moxam
+# Based on the Ruby version, contributed by Wesley Moxam
 # Modified by Sokolov Yura aka funny_falcon
+#
+# Crystal version by Wesley Moxam
 
 def fannkuch(n)
   p = (0..n).to_a
@@ -12,7 +14,7 @@ def fannkuch(n)
   while(true)
     # flip.
     if (q1 = p[1]) != 1
-      q[0..-1] = p
+      q = p.dup
       flips = 1
       until (qq = q[q1]) == 1
         q[q1] = q1
