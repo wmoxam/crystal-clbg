@@ -1,6 +1,7 @@
 # The Computer Language Benchmarks Game
 # http://benchmarksgame.alioth.debian.org
 #
+# Ported from Ruby to Crystal by Wesley Moxam
 # Optimized for Ruby by Jesse Millikan
 # From version ported by Michael Neumann from the C gcc version,
 # which was written by Christoph Bauer.
@@ -9,7 +10,8 @@ SOLAR_MASS = 4 * Math::PI**2
 DAYS_PER_YEAR = 365.24
 
 class Planet
- attr_accessor :x, :y, :z, :vx, :vy, :vz, :mass
+ getter :x, :y, :z, :mass
+ property :vx, :vy, :vz
 
  def initialize(x, y, z, vx, vy, vz, mass)
   @x, @y, @z = x, y, z
@@ -47,10 +49,10 @@ def energy(bodies)
   e = 0.0
   nbodies = bodies.size
 
-  for i in 0 ... nbodies
+  (0...nbodies).each do |i|
     b = bodies[i]
     e += 0.5 * b.mass * (b.vx * b.vx + b.vy * b.vy + b.vz * b.vz)
-    for j in (i + 1) ... nbodies
+    ((i+1)...nbodies).each do |j|
       b2 = bodies[j]
       dx = b.x - b2.x
       dy = b.y - b2.y
@@ -65,7 +67,7 @@ end
 def offset_momentum(bodies)
   px, py, pz = 0.0, 0.0, 0.0
 
-  for b in bodies
+  bodies.each do |b|
     m = b.mass
     px += b.vx * m
     py += b.vy * m
@@ -123,8 +125,7 @@ BODIES = [
     5.15138902046611451e-05)
 ]
 
-
-n = Integer(ARGV[0])
+n = ARGV[0].to_i
 
 offset_momentum(BODIES)
 
