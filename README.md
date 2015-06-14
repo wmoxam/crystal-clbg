@@ -12,15 +12,23 @@ Benchmarks
 
 Fannkuchredux:
 
-    $ crystal build fannkuchredux.cr
+    $ crystal build fannkuchredux.cr --release
     $ ./fannkuchredux 11
+    556355
+    Pfannkuchen(11) = 51
+    $
+
+Fasta:
+
+    $ crystal build fasta.cr --release
+    $ ./fasta 250000
     556355
     Pfannkuchen(11) = 51
     $
 
 Nbody:
 
-    $ crystal build nbody.cr
+    $ crystal build nbody.cr --release
     $ ./nbody 50000000
     -0.169075164
     -0.169059907
@@ -28,7 +36,7 @@ Nbody:
 
 Regexdna:
 
-    $ crystal build regexdna.cr
+    $ crystal build regexdna.cr --release
     $ ./regexdna < regexdna-input50000.txt
     agggtaaa|tttaccct 0
     [cgt]gggtaaa|tttaccc[acg] 3
