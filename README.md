@@ -25,3 +25,23 @@ Nbody:
     -0.169075164
     -0.169059907
     $
+
+Regexdna:
+
+    $ crystal build regexdna.cr
+    $ ./regexdna < regexdna-input50000.txt
+    agggtaaa|tttaccct 0
+    [cgt]gggtaaa|tttaccc[acg] 3
+    a[act]ggtaaa|tttacc[agt]t 9
+    ag[act]gtaaa|tttac[agt]ct 8
+    agg[act]taaa|ttta[agt]cct 10
+    aggg[acg]aaa|ttt[cgt]ccct 3
+    agggt[cgt]aa|tt[acg]accct 4
+    agggta[cgt]a|t[acg]taccct 3
+    agggtaa[cgt]|[acg]ttaccct 5
+
+    101745
+    100000
+    133640
+
+    $

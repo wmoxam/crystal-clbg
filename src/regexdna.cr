@@ -1,13 +1,18 @@
 # The Computer Language Benchmarks Game
 # http://benchmarksgame.alioth.debian.org
 #
-# contributed by jose fco. gonzalez
+# Original Ruby version contributed by jose fco. gonzalez
 # optimized & parallelized by Rick Branson
+# Ported to Crystal by Wesley Moxam
 
-seq = STDIN.readlines.join
+seq = ""
+while s = STDIN.gets
+  seq += s
+end
+
 ilen = seq.size
 
-seq.gsub!(/>.*\n|\n/,"")
+seq = seq.gsub(/>.*\n|\n/,"")
 clen = seq.length
 
 MATCHERS = [
@@ -22,46 +27,26 @@ MATCHERS = [
   /agggtaa[cgt]|[acg]ttaccct/
 ]
 
-if RUBY_PLATFORM == "java"
-  threads = MATCHERS.map do |f|
-    Thread.new do
-      Thread.current[:result] = "#{f.source} #{seq.scan(f).size}"
-    end
+results = {} of Regex => String
+threads = MATCHERS.map do |f|
+  Thread.new do
+    results[f] = "#{f.source} #{seq.scan(f).size}"
   end
+end
 
-  threads.each do |t|
-    t.join
-  end
+threads.each do |t|
+  t.join
+end
 
-  threads.each do |t|
-    puts t[:result]
-  end
-else
-  children = MATCHERS.map do |f|
-    r, w = IO.pipe
-    p = Process.fork do
-      r.close
-      w.write "#{f.source} #{seq.scan(f).size}"
-      w.close
-    end
-
-    w.close
-    [p, r, w]
-  end
-
-  children.each do |p, r, w|
-    puts r.read
-    r.close
-  end
-
-  Process.waitall
+MATCHERS.each do |t|
+  puts results[t]
 end
 
 {
-'B' => '(c|g|t)', 'D' => '(a|g|t)', 'H' => '(a|c|t)', 'K' => '(g|t)',
-'M' => '(a|c)', 'N' => '(a|c|g|t)', 'R' => '(a|g)', 'S' => '(c|t)',
-'V' => '(a|c|g)', 'W' => '(a|t)', 'Y' => '(c|t)'
-}.each { |f,r| seq.gsub!(f,r) }
+'B' => "(c|g|t)", 'D' => "(a|g|t)", 'H' => "(a|c|t)", 'K' => "(g|t)",
+'M' => "(a|c)", 'N' => "(a|c|g|t)", 'R' => "(a|g)", 'S' => "(c|t)",
+'V' => "(a|c|g)", 'W' => "(a|t)", 'Y' => "(c|t)"
+}.each { |f,r| seq = seq.gsub(f,r) }
 
 puts
 puts ilen
