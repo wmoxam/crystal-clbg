@@ -50,7 +50,7 @@ def make_repeat_fasta(id, desc, src, n)
     puts ">#{id} #{desc}"
     l = src.length
     s = src * ((n / l) + 1)
-    s = s[0, n] + s[l, -1]
+    s = s[0, n] + s[l, s.length - 1]
     0.step(s.length-1,60) {|x| print s[x,60] , "\n"}
 end
 

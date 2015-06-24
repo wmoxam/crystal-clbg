@@ -7,8 +7,31 @@ To start the idea is to do a port of the Ruby benchmarks.
 
 Targeting the HEAD version of Crystal
 
-Benchmarks
-----------
+Status
+------
+
+(note: using Ruby 2.2.2 on Ubuntu, AMD Phenom(tm) II X3 720 Processor × 3)
+
+Binarytrees: Segfault (see: https://github.com/manastech/crystal/issues/795)
+
+Fannkuchredux:
+  Ruby:     3m3.043s
+  Crystal:  0m14.795s
+
+Fasta:
+  Ruby:     0m36.415s
+  Crystal:  0m10.528s
+
+Nbody:
+  Ruby:     10m59.351s
+  Crystal:  0m13.895s
+
+Regexdna:
+  Ruby:     0m13.484s
+  Crystal:  0m13.367s
+
+Running Benchmarks
+------------------
 
 Fannkuchredux:
 
@@ -21,9 +44,13 @@ Fannkuchredux:
 Fasta:
 
     $ crystal build fasta.cr --release
-    $ ./fasta 250000
-    556355
-    Pfannkuchen(11) = 51
+    $ ./fasta 2500000
+    >ONE Homo sapiens alu
+    GGCCGGGCGCGGTGGCTCACGCCTGTAATCCCAGCACTTTGGGAGGCCGAGGCGGGCGGA
+    TCACCTGAGGTCAGGAGTTCGAGACCAGCCTGGCCAACATGGTGAAACCCCGTCTCTACT
+    AAAAATACAAAAATTAGCCGGGCGTGGTGGCGCGCGCCTGTAATCCCAGCTACTCGGGAG
+    ...
+    <tons of output>
     $
 
 Nbody:
@@ -37,7 +64,7 @@ Nbody:
 Regexdna:
 
     $ crystal build regexdna.cr --release
-    $ ./regexdna < regexdna-input50000.txt
+    $ ./regexdna < regexdna-input2500000.txt
     agggtaaa|tttaccct 0
     [cgt]gggtaaa|tttaccc[acg] 3
     a[act]ggtaaa|tttacc[agt]t 9
