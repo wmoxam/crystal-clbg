@@ -12,7 +12,9 @@ Status
 
 (note: using Ruby 2.2.2 on Ubuntu, AMD Phenom(tm) II X3 720 Processor × 3)
 
-Binarytrees: Segfault (see: https://github.com/manastech/crystal/issues/795)
+Binarytrees:
+  Ruby:     2m47.955s
+  Crystal:  0m42.636s
 
 Fannkuchredux:
   Ruby:     3m3.043s
@@ -32,6 +34,23 @@ Regexdna:
 
 Running Benchmarks
 ------------------
+
+Binary Trees:
+
+    $ crystal build binarytrees.cr --release
+    $ ./binarytrees 20
+    stretch tree of depth 21	 check: -1
+    2097152	 trees of depth 4	 check: -2097152
+    524288	 trees of depth 6	 check: -524288
+    131072	 trees of depth 8	 check: -131072
+    32768	 trees of depth 10	 check: -32768
+    8192	 trees of depth 12	 check: -8192
+    2048	 trees of depth 14	 check: -2048
+    512	 trees of depth 16	 check: -512
+    128	 trees of depth 18	 check: -128
+    32	 trees of depth 20	 check: -32
+    long lived tree of depth 20	 check: -1
+    $
 
 Fannkuchredux:
 
