@@ -9,10 +9,7 @@
 class Node
   property :item, :left, :right
 
-  def initialize(item, left, right)
-    @item = item
-    @left = left
-    @right = right
+  def initialize(@item, @left, @right)
   end
 
   def item_check : Int32
