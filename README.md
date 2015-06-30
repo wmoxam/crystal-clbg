@@ -12,25 +12,25 @@ Status
 
 (note: using Ruby 2.2.2 on Ubuntu, AMD Phenom(tm) II X3 720 Processor × 3)
 
-Binarytrees:
-  Ruby:     2m47.955s
-  Crystal:  0m42.636s
+    Binarytrees:
+      Ruby:     2m47.955s
+      Crystal:  0m42.636s
 
-Fannkuchredux:
-  Ruby:     3m3.043s
-  Crystal:  0m14.795s
+    Fannkuchredux:
+      Ruby:     3m3.043s
+      Crystal:  0m14.795s
 
-Fasta:
-  Ruby:     0m36.415s
-  Crystal:  0m10.528s
+    Fasta:
+      Ruby:     0m36.415s
+      Crystal:  0m10.528s
 
-Nbody:
-  Ruby:     10m59.351s
-  Crystal:  0m13.895s
+    Nbody:
+      Ruby:     10m59.351s
+      Crystal:  0m13.895s
 
-Regexdna:
-  Ruby:     0m13.484s
-  Crystal:  0m13.367s
+    Regexdna:
+      Ruby:     0m13.484s
+      Crystal:  0m13.367s
 
 Running Benchmarks
 ------------------
